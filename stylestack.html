@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STYLE STACK – Your Style, Your Story</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:wght@300;400;600&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #F0D080;
+    --rose: #E8A0BF;
+    --blush: #FADADD;
+    --cream: #FFF8F0;
+    --deep: #1a0a00;
+    --charcoal: #3a2a1a;
+    --silver: #C0C0C0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--charcoal);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a0a00 0%, #3d1c02 40%, #5c2d0a 70%, #1a0a00 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.18) 0%, transparent 70%);
+  }
+
+  /* Floating sparkles */
+  .sparkle {
+    position: absolute;
+    width: 6px; height: 6px;
+    background: var(--gold-light);
+    border-radius: 50%;
+    animation: floatSpark 4s ease-in-out infinite;
+    opacity: 0.6;
+  }
+  .sparkle:nth-child(1)  { top: 10%; left: 15%; animation-delay: 0s; }
+  .sparkle:nth-child(2)  { top: 20%; left: 80%; animation-delay: 0.5s; width: 4px; height: 4px; }
+  .sparkle:nth-child(3)  { top: 70%; left: 10%; animation-delay: 1s; }
+  .sparkle:nth-child(4)  { top: 80%; left: 85%; animation-delay: 1.5s; width: 8px; height: 8px; }
+  .sparkle:nth-child(5)  { top: 40%; left: 5%; animation-delay: 2s; width: 4px; height: 4px; }
+  .sparkle:nth-child(6)  { top: 55%; left: 92%; animation-delay: 0.8s; }
+  .sparkle:nth-child(7)  { top: 30%; left: 50%; animation-delay: 1.2s; width: 5px; height: 5px; }
+  .sparkle:nth-child(8)  { top: 88%; left: 40%; animation-delay: 2.5s; }
+
+  @keyframes floatSpark {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+    50% { transform: translateY(-18px) scale(1.4); opacity: 1; }
+  }
+
+  .hero-logo-img {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 3px solid var(--gold);
+    margin-bottom: 18px;
+    box-shadow: 0 0 30px rgba(201,168,76,0.4);
+    animation: fadeDown 1s ease both;
+  }
+
+  .hero-brand {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(3rem, 10vw, 6.5rem);
+    color: var(--gold-light);
+    text-shadow: 0 0 40px rgba(201,168,76,0.5), 0 2px 8px #000;
+    letter-spacing: 2px;
+    animation: fadeDown 1s ease 0.2s both;
+    text-align: center;
+  }
+
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--rose);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-top: 8px;
+    animation: fadeDown 1s ease 0.4s both;
+    text-align: center;
+  }
+
+  .hero-quote {
+    margin: 30px auto 0;
+    max-width: 600px;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: #f5e6c8;
+    line-height: 1.7;
+    animation: fadeDown 1s ease 0.6s both;
+    padding: 0 20px;
+  }
+
+  .hero-quote span {
+    color: var(--gold-light);
+  }
+
+  .hero-cta {
+    margin-top: 36px;
+    animation: fadeDown 1s ease 0.8s both;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 14px 44px;
+    background: linear-gradient(135deg, var(--gold), #a07020, var(--gold));
+    color: #fff;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 24px rgba(201,168,76,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .cta-btn:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 8px 36px rgba(201,168,76,0.6);
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SECTION SHARED */
+  section { padding: 80px 20px; }
+
+  .section-label {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .section-title {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--charcoal);
+    margin-bottom: 14px;
+  }
+  .section-sub {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #7a5a3a;
+    max-width: 580px;
+    margin: 0 auto 50px;
+    line-height: 1.7;
+  }
+  .gold-line {
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 14px auto;
+  }
+
+  /* ABOUT */
+  .about {
+    background: linear-gradient(135deg, #fff8f0 0%, #ffeedd 100%);
+  }
+  .about-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+  }
+  .about-logo {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 20px;
+    box-shadow: 0 16px 50px rgba(0,0,0,0.12);
+    display: block;
+    margin: 0 auto;
+  }
+  .about-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--charcoal);
+    margin-bottom: 16px;
+  }
+  .about-text p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #5a3a1a;
+    margin-bottom: 14px;
+  }
+
+  /* CUTE QUOTE BANNER */
+  .quote-banner {
+    background: linear-gradient(135deg, #3d1c02, #5c2d0a, #3d1c02);
+    padding: 60px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .quote-banner::before {
+    content: '✦ ✦ ✦';
+    display: block;
+    color: var(--gold);
+    font-size: 1.2rem;
+    letter-spacing: 12px;
+    margin-bottom: 20px;
+    opacity: 0.6;
+  }
+  .quote-banner blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    color: #fff8ee;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .quote-banner blockquote span {
+    color: var(--gold-light);
+  }
+  .quote-banner cite {
+    display: block;
+    margin-top: 18px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.3rem;
+    color: var(--rose);
+    font-style: normal;
+  }
+
+  /* PRODUCTS GRID */
+  .products { background: var(--cream); }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 28px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .product-card {
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+  }
+  .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 50px rgba(201,168,76,0.2);
+  }
+  .product-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+  }
+  .product-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: var(--gold);
+    color: #fff;
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 30px;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .product-info {
+    padding: 18px 20px 22px;
+  }
+  .product-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--charcoal);
+    margin-bottom: 6px;
+  }
+  .product-info p {
+    font-size: 0.95rem;
+    color: #8a6040;
+    line-height: 1.6;
+  }
+  .product-tag {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  /* VISIT BANNER */
+  .visit-banner {
+    background: linear-gradient(135deg, #fff0f5, #ffe4ee, #fff8e0);
+    padding: 70px 20px;
+    text-align: center;
+    position: relative;
+  }
+  .visit-banner::before {
+    content: '🌸';
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 10px;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+
+  .visit-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 44px 40px;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 12px 60px rgba(201,168,76,0.15);
+    border: 2px solid #f5d88a;
+    position: relative;
+  }
+  .visit-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    color: var(--charcoal);
+    margin-bottom: 14px;
+  }
+  .visit-card .event-date {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2rem;
+    color: var(--gold);
+    margin: 10px 0;
+  }
+  .visit-card .location {
+    font-size: 1.1rem;
+    color: #5a3a1a;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .visit-card .location strong {
+    color: var(--charcoal);
+    font-weight: 600;
+  }
+  .visit-note {
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--rose);
+    margin-top: 10px;
+  }
+
+  /* FEATURES ROW */
+  .features {
+    background: linear-gradient(135deg, #1a0a00, #2d1200);
+    padding: 60px 20px;
+  }
+  .features-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+    text-align: center;
+  }
+  .feature-item {
+    color: #f5e6c8;
+  }
+  .feature-icon { font-size: 2.2rem; margin-bottom: 10px; }
+  .feature-item h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    margin-bottom: 6px;
+  }
+  .feature-item p { font-size: 0.95rem; color: #c8a880; line-height: 1.6; }
+
+  /* FOOTER */
+  footer {
+    background: #0f0500;
+    color: #c8a880;
+    text-align: center;
+    padding: 36px 20px;
+  }
+  footer .footer-brand {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+  }
+  footer p { font-size: 0.95rem; line-height: 1.8; }
+  .hearts { color: var(--rose); font-size: 1.1rem; margin-top: 8px; }
+
+  /* Placeholder styles for missing images */
+  .img-placeholder {
+    width: 100%;
+    height: 240px;
+    background: linear-gradient(135deg, var(--gold-light), var(--rose), var(--blush));
+    border-radius: 12px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--deep);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: inset 0 0 20px rgba(255,255,255,0.3);
+    overflow: hidden;
+  }
+  .img-placeholder::before {
+    content: '✦';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2rem;
+    color: var(--gold);
+    opacity: 0.8;
+  }
+  .img-placeholder::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 1px;
+  }
+
+  /* Specific placeholders */
+  .hero-logo-placeholder {
+    width: 110px !important;
+    height: 110px !important;
+    border-radius: 50% !important;
+    background: radial-gradient(circle, var(--gold) 20%, var(--gold-light) 50%, var(--rose) 80%);
+    font-size: 1.8rem !important;
+    line-height: 1.1;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    border: 3px solid var(--gold);
+    box-shadow: 0 0 20px rgba(201,168,76,0.4);
+  }
+  .about-placeholder {
+    border-radius: 20px !important;
+    max-width: 320px;
+    margin: 0 auto;
+    background: linear-gradient(145deg, #fff8f0, #f0e0d0);
+  }
+  .bracelet-ph { background: linear-gradient(135deg, #d4af37, #f0c14b, #c39953); }
+  .necklace-ph { background: linear-gradient(135deg, #4169e1, #87ceeb, #add8e6); }
+  .earrings-ph { background: linear-gradient(135deg, #c0c0c0, #e6e6fa, #dda0dd); }
+  .stickers-ph { background: linear-gradient(135deg, #ffb6c1, #ff69b4, #ffc0cb); }
+  .scrunchies-ph { background: linear-gradient(135deg, #ffc0cb, #ff69b4, #dda0dd); }
+
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .about-inner { grid-template-columns: 1fr; gap: 30px; }
+    .visit-card { padding: 30px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+
+  <img src="images/logo.jpeg" alt="Style Stack Logo" class="hero-logo-img">
+  <div class="hero-brand">Style Stack</div>
+  <div class="hero-tagline">✦ Your Style, Your Story ✦</div>
+  <p class="hero-quote">
+    "Wear what makes your heart sing — because <span>every girl deserves to sparkle</span> a little extra today."
+  </p>
+  <div class="hero-cta">
+    <a href="#visit" class="cta-btn">Visit Our Stall ✦</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-inner">
+    <img src="images/logo_.jpeg" alt="Style Stack" class="about-logo">
+    <div class="about-text">
+      <h3>Welcome to Style Stack 💛</h3>
+      <p>We're a curated fashion accessories stall bringing you the most adorable, trendy, and affordable jewellery, hair accessories, and more — all in one place!</p>
+      <p>From delicate gold-tone bangles to shimmering crystal necklaces, playful earrings to silky satin scrunchies — Style Stack has everything you need to elevate your everyday look without breaking the bank.</p>
+      <p>Our collection is handpicked with love for college girls, fashionistas, and everyone who believes that accessories are the best kind of self-expression. ✨</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE BANNER -->
+<div class="quote-banner">
+  <blockquote>
+    "Life is short, buy the <span>cute bracelet</span> — and the necklace too. You deserve it, gorgeous! 💖"
+  </blockquote>
+  <cite>— Style Stack ✦</cite>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <p class="section-label">Our Collection</p>
+  <h2 class="section-title">Handpicked Just for You</h2>
+  <span class="gold-line"></span>
+  <p class="section-sub">Affordable fashion accessories that make you feel like a million bucks. Every piece, a little piece of magic.</p>
+
+  <div class="products-grid">
+    <div class="product-card">
+      <img src="images/bracelet.jpeg" alt="Gold Bangles">
+      <span class="product-badge">✦ Trending</span>
+      <div class="product-info">
+        <h3>Gold Bangle Sets</h3>
+        <p>Stackable gold-tone bangles with unique designs — from knotted to twisted to circle charm. Mix & match to create your own look!</p>
+        <span class="product-tag">Bracelets</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="images/5_ch.jpeg" alt="Blue Crystal Necklaces">
+      <span class="product-badge">💎 New</span>
+      <div class="product-info">
+        <h3>Blue Crystal Necklaces</h3>
+        <p>Dreamy aqua crystal pendants — butterfly, clover & moon designs on silver chains. Perfect gift for your bestie!</p>
+        <span class="product-tag">Necklaces</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="images/4_ch.jpeg" alt="Silver Charm Necklaces">
+      <span class="product-badge">🦋 Cute</span>
+      <div class="product-info">
+        <h3>Silver Charm Necklaces</h3>
+        <p>Delicate butterfly, heart, star & moon charms on fine silver chains. Minimalist, elegant, and oh-so-adorable.</p>
+        <span class="product-tag">Necklaces</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="images/3_ch.jpeg" alt="Gold Pendant Necklaces">
+      <span class="product-badge">⭐ Fave</span>
+      <div class="product-info">
+        <h3>Gold & Rose Gold Pendants</h3>
+        <p>Infinity, mama heart, leaf, pearl & star pendants in gold & rose gold. Gorgeous layered or worn solo.</p>
+        <span class="product-tag">Necklaces</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="images/2_ch.jpeg" alt="Diamond Necklace Set">
+      <span class="product-badge">✨ Glam</span>
+      <div class="product-info">
+        <h3>Dainty Diamond-look Necklaces</h3>
+        <p>Star-burst, pearl, butterfly & star pendants with crystal accents. The perfect everyday sparkle in gold & silver.</p>
+        <span class="product-tag">Necklaces</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="images/s_ch1.jpeg" alt="Silver Pearl Necklaces">
+      <span class="product-badge">🌙 Elegant</span>
+      <div class="product-info">
+        <h3>Silver Pearl Necklaces</h3>
+        <p>Timeless pearl pendant necklaces in silver — triple pearl bar, star, heart & infinity. Minimal, classy and forever stylish.</p>
+        <span class="product-tag">Necklaces</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="images/ear.jpeg" alt="Fashion Earrings">
+      <span class="product-badge">🎀 Set</span>
+      <div class="product-info">
+        <h3>Fashion Earring Sets</h3>
+        <p>Mixed sets with hoops, chain hoops, pearl studs, heart dangles & twisted rings. One set, endless combinations!</p>
+        <span class="product-tag">Earrings</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="images/1774677349971_image.png" alt="Sticker Packs">
+      <span class="product-badge">🌸 Kawaii</span>
+      <div class="product-info">
+        <h3>Cute Sticker Packs</h3>
+        <p>Adorable chibi-style sticker sets — perfect for phones, laptops, notebooks & more. Kawaii vibes only!</p>
+        <span class="product-tag">Stickers</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="images/1774677548237_image.png" alt="Satin Scrunchies">
+      <span class="product-badge">🎀 Soft</span>
+      <div class="product-info">
+        <h3>Satin Scrunchies</h3>
+        <p>Luxuriously silky satin scrunchies in a rainbow of pastel and bold shades. Gentle on hair, gorgeous on the wrist!</p>
+        <span class="product-tag">Hair Accessories</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="features-grid">
+    <div class="feature-item">
+      <div class="feature-icon">💰</div>
+      <h4>Pocket-Friendly</h4>
+      <p>Gorgeous accessories at prices that make you smile</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">✨</div>
+      <h4>Handpicked Quality</h4>
+      <p>Every piece curated with care and an eye for style</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🎁</div>
+      <h4>Perfect Gifting</h4>
+      <p>Cute gifts for your bestie, sister or yourself!</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🦋</div>
+      <h4>Trendy & Chic</h4>
+      <p>Latest fashion trends, always up-to-date looks</p>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT BANNER -->
+<section class="visit-banner" id="visit">
+  <div class="visit-card">
+    <h2>✦ Come Find Us! ✦</h2>
+    <p style="font-size:1.1rem; color:#8a6040; margin-bottom:6px;">We're setting up our stall at —</p>
+    <div class="event-date">9th April 2025</div>
+    <p class="location">
+      <strong>Dhanalakshmi College of Engineering</strong><br>
+      Manimangalam, Chennai
+    </p>
+    <p style="font-size:1rem; color:#7a5a3a; margin-bottom: 16px;">Come, browse, and treat yourself to something beautiful. We can't wait to meet you! 💛</p>
+    <p class="visit-note">"Stop by, say hi, and let us help you find your new favourite accessory!" 🌸</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Style Stack</div>
+  <p>Your one-stop destination for trendy, affordable fashion accessories.</p>
+  <p style="margin-top:6px; color:#a07050;">Jewellery · Necklaces · Earrings · Bracelets · Hair Accessories · Stickers</p>
+  <p class="hearts">Made with ♥ for every girl who loves to shine</p>
+  <p style="margin-top:14px; font-size:0.82rem; color:#6a4a2a;">© 2025 Style Stack · style.exe</p>
+</footer>
+
+</body>
+</html>
